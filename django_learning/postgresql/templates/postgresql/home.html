@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Care - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+        }
+
+        .auth-buttons {
+            margin-top: 20px;
+        }
+
+        .auth-buttons button {
+            margin: 15px;
+            padding: 15px 25px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Mental Health Care</h1>
+        <p>Your Mental Health Matters</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Take Care of Your Mental Health</h1>
+            <p>Explore resources and connect with professionals</p>
+
+            <!-- Auth Buttons -->
+            <div class="auth-buttons">
+                {% if request.session.useremail %}
+                <h3>Hello, {{ request.session.useremail }}</h3>
+               <a href="{% url 'logout' %}"><button>Logout</button></a>
+            {% else %}
+                <a href="{% url 'login' %}"><button>Login</button></a>
+                <a href="{% url 'register' %}"><button>Register</button></a>
+            {% endif %}
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
